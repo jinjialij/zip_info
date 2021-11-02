@@ -8,8 +8,10 @@ const ZipTable = (props) => {
       <Table
         striped
         bordered
-        responsive="lg"
+        responsive="sm"
+        hover
         className="mt-3 text-center align-middle"
+        size="sm"
       >
         <thead>
           <tr>

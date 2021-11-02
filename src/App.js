@@ -67,7 +67,7 @@ function App() {
         };
         setZipList(transformedData);
       } else {
-        alert("Cannot find information of this city, please try another.");
+        alert("Cannot find information of this place, please try another.");
       }
     } catch (error) {
       console.error(error);
@@ -78,7 +78,7 @@ function App() {
   return (
     <>
       <MainNavigation />
-      <main className="container-fluid">
+      <main className="container">
         <Switch>
           <Route path="/" exact={true}>
             <Formpage>

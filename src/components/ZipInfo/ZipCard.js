@@ -1,4 +1,7 @@
 import Card from "react-bootstrap/Card";
+import Image from "react-bootstrap/Image";
+import ListGroup from "react-bootstrap/ListGroup";
+
 const ZipCard = (props) => {
   let url;
   if (props.info.lat) {
@@ -7,13 +10,16 @@ const ZipCard = (props) => {
 
   return (
     <Card style={{ width: "100%" }}>
-      <Card.Header className="mb-2 text-center">Zip Info</Card.Header>
+      <Card.Header className="mb-2 text-center fs-2 fw-bold">
+        Zip Info
+      </Card.Header>
       <Card.Body className="mb-2 text-center">
-        <Card.Text>Country: {props.info.country}</Card.Text>
-        <Card.Text>State: {props.info.state}</Card.Text>
-        <Card.Text>Post Code: {props.info.postcode}</Card.Text>
-        <Card.Text>Place Name:</Card.Text>
-        <Card.Text>{props.info.placeName}</Card.Text>
+        <ListGroup variant="flush">
+          <ListGroup.Item>Country: {props.info.country}</ListGroup.Item>
+          <ListGroup.Item>State: {props.info.state}</ListGroup.Item>
+          <ListGroup.Item>Post Code: {props.info.postcode}</ListGroup.Item>
+          <ListGroup.Item>Place Name: {props.info.placeName}</ListGroup.Item>
+        </ListGroup>
         <Card.Link href={url}>View on Google Map</Card.Link>
       </Card.Body>
     </Card>
