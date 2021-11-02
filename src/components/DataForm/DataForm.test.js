@@ -18,7 +18,7 @@ afterEach(() => {
   container = null;
 });
 
-describe("Test DuckForm components", () => {
+describe("Test Data from components", () => {
   test("renders check if there is a button", () => {
     render(
       <MemoryRouter>
@@ -27,18 +27,5 @@ describe("Test DuckForm components", () => {
     );
     const buttonElement = screen.getByRole("button");
     expect(buttonElement).toBeInTheDocument();
-  });
-
-  test("renders check if there is option element", () => {
-    render(
-      <MemoryRouter>
-        <DataForm />
-      </MemoryRouter>
-    );
-    const optionElement = screen.queryAllByRole("option").toLocaleString();
-    expect(optionElement).toBe(
-      `[object HTMLOptionElement],[object HTMLOptionElement],[object HTMLOptionElement],[object HTMLOptionElement]`,
-      { exact: false }
-    );
   });
 });

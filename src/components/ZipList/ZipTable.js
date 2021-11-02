@@ -30,11 +30,11 @@ const ZipTable = (props) => {
             />
           ))}
       </Table>
-      {/* {props.ducks && props.ducks.length === 0 && (
+      {props.data && props.data.length === 0 && (
         <div className="container-fluid d-flex justify-content-center text-center">
           <p>--No Data--</p>
         </div>
-      )} */}
+      )}
     </>
   );
 };

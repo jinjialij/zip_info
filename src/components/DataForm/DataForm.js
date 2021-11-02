@@ -21,7 +21,6 @@ const DataForm = (props) => {
       initialValues={initialValue}
       validationSchema={schema}
       onSubmit={(values, formikBag) => {
-        // console.log(values);
         props.onGetZipLists(values);
         formikBag.resetForm(true);
       }}
