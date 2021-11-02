@@ -8,7 +8,6 @@ const AsyncSelectionField = (props) => {
   const { values: country, touched, setFieldValue } = useFormikContext();
   const [field, meta] = useField(props);
   const [selectedCountry, setSelectedCountry] = useState(country.country);
-  const [disabled, setDisabled] = useState(true);
   const [selectedState, setSelectedState] = useState(country.state);
   const [stateArr, setStateArr] = useState([]);
   const [cityArr, setCityArr] = useState([]);
@@ -52,14 +51,8 @@ const AsyncSelectionField = (props) => {
       })();
       setFieldValue("city", " ");
     }
-    if (
-      touched.country &&
-      country.country === selectedCountry &&
-      country.country
-    ) {
-      setDisabled(false);
-    }
-    console.log(country);
+
+    // console.log(country);
   }, [
     selectedCountry,
     selectedState,
@@ -76,12 +69,6 @@ const AsyncSelectionField = (props) => {
     <>
       {props.name === "country" && (
         <>
-          <FormField
-            label="Post/Zip code"
-            name="postcode"
-            type="text"
-            disabled={disabled}
-          />
           <SelectField {...props} {...field} options={props.options} />
           <ErrorMessage className="error" component="div" name={field.name} />
         </>

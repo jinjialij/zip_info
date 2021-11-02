@@ -15,6 +15,7 @@ import ZipCard from "./components/ZipInfo/ZipCard";
 function App() {
   const [countryArr, setCountryArr] = useState(fetchDataHandler);
   const [zipInfo, setZipInfo] = useState({});
+  const [zipList, setZipList] = useState({});
   useEffect(() => {
     fetchDataHandler();
   }, []);
@@ -43,7 +44,20 @@ function App() {
       long: places.longitude,
     };
     setZipInfo(transformedData);
-    console.log(transformedData);
+  }
+
+  async function fetchZipLists(info) {
+    const url = `http://api.zippopotam.us/${info.country}/${info.state}/${info.city}`;
+    // console.log(url);
+    const data = await fetchZipInfoApiHandler(url);
+    const transformedData = {
+      country: data.country,
+      places: data.places,
+      state: data.state,
+      placeName: data["place name"],
+    };
+    // console.log(transformedData);
+    setZipList(transformedData);
   }
 
   return (
@@ -58,8 +72,15 @@ function App() {
             </Formpage>
           </Route>
           <Route path="/lists">
-            <DataForm countries={countryArr} />
-            <ZipList />
+            {!zipList.country && (
+              <Formpage>
+                <DataForm
+                  countries={countryArr}
+                  onGetZipLists={fetchZipLists}
+                />
+              </Formpage>
+            )}
+            {zipList.country && <ZipList data={zipList} />}
           </Route>
         </Switch>
       </main>

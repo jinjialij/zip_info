@@ -1,6 +1,10 @@
 import Card from "react-bootstrap/Card";
 const ZipCard = (props) => {
-  const url = `https://www.google.ca/maps/@${props.lat},@${props.long},15z`;
+  let url;
+  if (props.info.lat) {
+    url = `https://www.google.ca/maps/@${props.info.lat},@${props.info.long},15z`;
+  }
+
   return (
     <Card style={{ width: "100%" }}>
       <Card.Header className="mb-2 text-center">Zip Info</Card.Header>

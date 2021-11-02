@@ -7,14 +7,12 @@ const DataForm = (props) => {
     city: "",
     state: "",
     country: "",
-    postcode: "",
   };
 
   const schema = Yup.object().shape({
     city: Yup.string().required("Required").min(1).max(45),
     state: Yup.string().required("Required").min(1).max(45),
     country: Yup.string().required("Required").min(1).max(45),
-    postcode: Yup.string().required("Required").min(1).max(11),
   });
 
   return (
@@ -23,7 +21,8 @@ const DataForm = (props) => {
       initialValues={initialValue}
       validationSchema={schema}
       onSubmit={(values, formikBag) => {
-        // props.onAddDuckData(values);
+        // console.log(values);
+        props.onGetZipLists(values);
         formikBag.resetForm(true);
       }}
     >
