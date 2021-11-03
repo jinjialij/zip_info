@@ -26,8 +26,6 @@ To build and run the application you need:
   npm i npm-install
   ```
 
-- (To use your local database) MySQL version 8.0.23
-
 ### Installing
 
 1. Clone the repository
@@ -47,8 +45,8 @@ To build and run the application you need:
 
 ### Run react app
 
-In the project directory, open terminal to run: `npm start`  
-Runs the app in the development mode.\
+In the project directory, open terminal to run: `npm start`
+
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ### Deployment
