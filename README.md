@@ -1,6 +1,6 @@
 # Zip Info
 
-This web app is a website that allows user to get Zip code information. [Check the Demo]()
+This web app is a website that allows user to get Zip code information. [Check the Demo](https://zipinfo-67ffb.web.app/)
 
 ### Built with
 
