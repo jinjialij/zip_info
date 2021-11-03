@@ -22,7 +22,7 @@ async function fetchLocationApiData(url) {
 async function fetchZipInfoApiHandler(url) {
   try {
     const res = await fetch(url).then((resp) => resp.json());
-    console.log(res);
+    // console.log(res);
     return res;
   } catch (error) {
     console.error(error);

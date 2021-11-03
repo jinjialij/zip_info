@@ -20,7 +20,7 @@ const ZipInfo = (props) => {
       initialValues={initialValue}
       validationSchema={schema}
       onSubmit={(values, formikBag) => {
-        console.log(values);
+        // console.log(values);
         props.onGetZipInfo(values);
         formikBag.resetForm(true);
       }}
