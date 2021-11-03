@@ -6,7 +6,7 @@ const MainNavigation = () => {
     <header className={`container-fluid mb-3 py-3 ${classes.header}`}>
       <div>
         <NavLink to="/">
-          <span className={`${classes.logo} py-3`}>Find zip</span>
+          <span className={`${classes.logo} py-3`}>Zip Info</span>
         </NavLink>
       </div>
       <nav>

@@ -30,8 +30,7 @@ function App() {
   }
 
   async function fetchZipInfo(info) {
-    console.log(info);
-    const url = `http://api.zippopotam.us/${info.country}/${info.postcode}`;
+    const url = `https://api.zippopotam.us/${info.country}/${info.postcode}`;
     try {
       const data = await fetchZipInfoApiHandler(url);
       if (data && data.places && data.places.length > 0) {
@@ -55,7 +54,7 @@ function App() {
   }
 
   async function fetchZipLists(info) {
-    const url = `http://api.zippopotam.us/${info.country}/${info.state}/${info.city}`;
+    const url = `https://api.zippopotam.us/${info.country}/${info.state}/${info.city}`;
     try {
       const data = await fetchZipInfoApiHandler(url);
       if (data && data.places && data.places.length > 0) {
