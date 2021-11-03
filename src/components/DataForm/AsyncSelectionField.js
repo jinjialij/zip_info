@@ -1,8 +1,9 @@
 import { useFormikContext, useField, ErrorMessage } from "formik";
-import FormField from "./FormField";
 import { fetchLocationApiData } from "../../services/api";
 import { useState, useEffect } from "react";
 import SelectField from "./SelectField";
+import Container from "react-bootstrap/Container";
+import Spinner from "react-bootstrap/Spinner";
 
 const AsyncSelectionField = (props) => {
   const { values: country, touched, setFieldValue } = useFormikContext();
@@ -11,6 +12,7 @@ const AsyncSelectionField = (props) => {
   const [selectedState, setSelectedState] = useState(country.state);
   const [stateArr, setStateArr] = useState([]);
   const [cityArr, setCityArr] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
     // set the value of state, based on country
     let url;
@@ -20,8 +22,10 @@ const AsyncSelectionField = (props) => {
       country.country
     ) {
       (async function () {
+        setIsLoading(true);
         url = `https://api.countrystatecity.in/v1/countries/${country.country}/states`;
         const data = await fetchLocationApiData(url);
+        setIsLoading(false);
         setStateArr([{ id: 0, key: "", value: "" }, ...data]);
       })();
       setSelectedCountry(country.country);
@@ -31,8 +35,10 @@ const AsyncSelectionField = (props) => {
 
     if (touched.country && country.country !== "" && country.state === "") {
       (async function () {
+        setIsLoading(true);
         url = `https://api.countrystatecity.in/v1/countries/${country.country}/states`;
         const data = await fetchLocationApiData(url);
+        setIsLoading(false);
         setStateArr([{ id: 0, key: "", value: "" }, ...data]);
       })();
       setFieldValue("city", " ");
@@ -44,9 +50,11 @@ const AsyncSelectionField = (props) => {
       country.state !== selectedState
     ) {
       setSelectedState(country.state);
+      setIsLoading(true);
       url = `https://api.countrystatecity.in/v1/countries/${country.country}/states/${country.state}/cities`;
       (async function () {
         const data = await fetchLocationApiData(url);
+        setIsLoading(false);
         setCityArr([{ id: 0, key: "", value: "" }, ...data]);
       })();
       setFieldValue("city", " ");
@@ -70,6 +78,17 @@ const AsyncSelectionField = (props) => {
         <>
           <SelectField {...props} {...field} options={props.options} />
           <ErrorMessage className="error" component="div" name={field.name} />
+          {isLoading && (
+            <Container className="mt-5 d-flex justify-content-center text-center">
+              <Spinner
+                animation="border"
+                role="status"
+                className="justify-content-center"
+              >
+                <span className="visually-hidden text-center">Loading...</span>
+              </Spinner>
+            </Container>
+          )}
         </>
       )}
       {props.name === "state" && stateArr.length > 1 && (

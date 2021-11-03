@@ -1,21 +1,38 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import classes from "./MainNavigation.module.css";
 
 const MainNavigation = () => {
   return (
     <header className={`container-fluid mb-3 py-3 ${classes.header}`}>
       <div>
-        <Link to="/">
+        <NavLink to="/">
           <span className={`${classes.logo} py-3`}>Find zip</span>
-        </Link>
+        </NavLink>
       </div>
       <nav>
         <ul>
           <li>
-            <Link to="/">Get Zip code information</Link>
+            <NavLink
+              exact={true}
+              activeStyle={{
+                fontWeight: "bold",
+                color: "yellow",
+              }}
+              to="/"
+            >
+              Get Zip code info
+            </NavLink>
           </li>
           <li>
-            <Link to="/lists">Zip Codes Lists</Link>
+            <NavLink
+              activeStyle={{
+                fontWeight: "bold",
+                color: "yellow",
+              }}
+              to="/lists"
+            >
+              Zip Codes Lists
+            </NavLink>
           </li>
         </ul>
       </nav>

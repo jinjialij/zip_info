@@ -1,8 +1,7 @@
-import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import Accordion from "react-bootstrap/Accordion";
+
 const ListCard = (props) => {
-  console.log(props);
   return (
     <Accordion defaultActiveKey="0">
       <Accordion.Item eventKey="0">

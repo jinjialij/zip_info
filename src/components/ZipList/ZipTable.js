@@ -2,7 +2,6 @@ import Table from "react-bootstrap/Table";
 import ZipCell from "./ZipCell";
 
 const ZipTable = (props) => {
-  console.log(props.data);
   return (
     <>
       <Table
