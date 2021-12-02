@@ -11,8 +11,12 @@ React.js, bootstrapped with [Create React App](https://github.com/facebook/creat
 APIs:
 
 [Zippopotamus Cloud](http://www.zippopotam.us/#)  
-[Country State City API](https://countrystatecity.in/)
-[A customized API built with Express](https://meetuphere.herokuapp.com/countries)
+[Country State City API](https://countrystatecity.in/)  
+[A customized API, built with Express](https://meetuphere.herokuapp.com/countries)
+
+- This api can retrieve specified countries that Country State City API supports
+
+---
 
 ## Getting Started
 
