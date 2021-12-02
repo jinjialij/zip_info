@@ -21,11 +21,14 @@ function App() {
   }, []);
 
   async function fetchDataHandler() {
-    const data = await fetchLocationApiData(
-      "https://api.countrystatecity.in/v1/countries"
+    const data = await fetchZipInfoApiHandler(
+      "https://meetuphere.herokuapp.com/countries"
     );
+    const countries = data.countries.map((el) => {
+      return { id: el.id, key: el.iso2, value: el.name };
+    });
     setCountryArr(() => {
-      return [{ id: 0, key: "", value: "" }, ...data];
+      return [{ id: 0, key: "", value: "" }, ...countries];
     });
   }
 
